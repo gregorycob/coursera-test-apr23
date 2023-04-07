@@ -23,9 +23,8 @@
                 return "Too much!";
             else if (nbOfDishes > 0)
                 return "Enjoy!";    
-        } else {
-            return "Please enter data first";
         }
+        return "Please enter data first";
     }
 
 })();
