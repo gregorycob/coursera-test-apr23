@@ -5,7 +5,6 @@
     .controller('ToBuyController', ToBuyControllerImpl)
     .controller('AlreadyBoughtController', AlreadyBoughtControllerImpl)
     .service('ShoppingListCheckOffService', ShoppingListCheckOffServiceImpl)
- //   .config(ConfigToFeedWithInitialData);
     
     console.log("starting");
 
@@ -14,10 +13,9 @@
 
         this.items = ShoppingListCheckOffService.getBuyList();
 
-        this.alreadyBought = function(itemIndex) {
-        console.log("user wants to declare item already bought :", itemIndex);
-    
-        ShoppingListCheckOffService.declareItemBought(itemIndex);
+        this.alreadyBoughtAction = function(itemIndex) {
+            console.log("user wants to declare item already bought :", itemIndex);
+            ShoppingListCheckOffService.declareItemBought(itemIndex);
         }
 
         this.isEmpty = function () {
@@ -65,20 +63,5 @@
             console.log(alreadyBoughtList);
         }
     }
-
-    // ConfigToFeedWithInitialData.$inject = ['ShoppingListCheckOffService'];
-    // function ConfigToFeedWithInitialData(ShoppingListCheckOffService) {
-
-    //     console.log("build config");
-
-    //     var buyList = this.ShoppingListCheckOffService.getBuyList();
-    //     buyList.push({ name: 'Blue Cookies', quantity : 10});
-    //     buyList.push({ name: 'Green Cookies', quantity : 20});
-    //     buyList.push({ name: 'Yellow Cookies', quantity : 30});
-    //     buyList.push({ name: 'White Cookies', quantity : 40});
-    //     buyList.push({ name: 'Brown Cookies', quantity : 50});
-    //     buyList.push({ name: 'Black Cookies', quantity : 60});
-    //     buyList.push({ name: 'Red Cookies', quantity : 70});
-    // }
 
 })();
