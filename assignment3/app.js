@@ -88,8 +88,9 @@
                 console.log("total number of menu items is ", menuItems.length);
 
                 if (searchTerm === undefined || searchTerm.length === 0) {
-                    console.log("search term undefined or empty, returning full list");
-                    return menuItems;
+                    console.log("search term undefined or empty");
+                    return [];
+                    //return menuItems;
                 }
 
                 var lowercaseSearchTerm = searchTerm.toLowerCase();
