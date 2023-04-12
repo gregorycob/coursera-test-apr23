@@ -11,28 +11,34 @@
     ToBuyControllerImpl.$inject = ['ShoppingListCheckOffService'];
     function ToBuyControllerImpl(ShoppingListCheckOffService) {
 
-        this.items = ShoppingListCheckOffService.getBuyList();
+        var ctrl = this;
 
-        this.alreadyBoughtAction = function(itemIndex) {
+        ctrl.items = ShoppingListCheckOffService.getBuyList();
+
+        ctrl.alreadyBoughtAction = function(itemIndex) {
             console.log("user wants to declare item already bought :", itemIndex);
             ShoppingListCheckOffService.declareItemBought(itemIndex);
         }
 
-        this.isEmpty = function () {
-            return (this.items.length == 0);
+        ctrl.isEmpty = function () {
+            return (ctrl.items.length == 0);
         }
     }
 
     AlreadyBoughtControllerImpl.$inject = ['ShoppingListCheckOffService'];
     function AlreadyBoughtControllerImpl(ShoppingListCheckOffService) {
-        this.items = ShoppingListCheckOffService.getAlreadyBoughtList();
+        var ctrl = this;
 
-        this.isEmpty = function () {
-            return (this.items.length == 0);
+        ctrl.items = ShoppingListCheckOffService.getAlreadyBoughtList();
+
+        ctrl.isEmpty = function () {
+            return (ctrl.items.length == 0);
         }
     }
 
     function ShoppingListCheckOffServiceImpl() {
+
+        var service = this;
 
         console.log("build service");
 
@@ -48,13 +54,13 @@
         toBuyList.push({ name: 'Black Cookies', quantity : 60});
         toBuyList.push({ name: 'Red Cookies', quantity : 70});
 
-        this.getBuyList = function () {
+        service.getBuyList = function () {
             return toBuyList;
         }
-        this.getAlreadyBoughtList = function () {
+        service.getAlreadyBoughtList = function () {
             return alreadyBoughtList;
         }
-        this.declareItemBought = function (idx) {
+        service.declareItemBought = function (idx) {
             console.log("mark item as bought : ", idx);
 
             var item = toBuyList.splice(idx,1);
