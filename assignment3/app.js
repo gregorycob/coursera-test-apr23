@@ -13,7 +13,8 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                items: '<found'
+                items: '<found',
+                onRemove: '&'
             },
             controller: FoundItemsDirectiveController,
             controllerAs: 'list',
@@ -35,10 +36,11 @@
             return (dirCtrl.items.length == 0);
         }
 
-        dirCtrl.removeItem = function(index) {
-            console.log("user requests to remove item ", index);
-            var dumpIt = dirCtrl.items.splice(index, 1);
-        }
+// BAD
+//        dirCtrl.removeItem = function(index) {
+//            console.log("user requests to remove item ", index);
+//            var dumpIt = dirCtrl.items.splice(index, 1);
+//        }
     }
 
     NarrowItDownController.$inject = ['MenuSearchService'];
@@ -57,6 +59,11 @@
             .catch(function (error) {
                 console.log("*** error processing menu items by controller");
             })
+        }
+
+        ctrl.removeItem = function(index) {
+            console.log("controller receives request to remove item ", index);
+            var dumpIt = ctrl.menuItems.splice(index, 1);
         }
     }
 
