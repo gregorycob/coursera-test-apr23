@@ -1,9 +1,11 @@
 <h3>Found items</h3>
 
 <ul>
-    <li ng-repeat="item in list">
-        {{item.name}} ({{item.short_name}})
+    <li ng-repeat="item in list.items">
+        <b>{{item.name}}</b> ({{item.short_name}}) <button class="btn btn-secondary">Don't want this one</button>
         <br/>
         <i>description: {{item.description}}</i>
     </li>
 </ul> 
+
+<div class="alert alert-warning" ng-if="list.nothingFound()">Nothing found</div>

@@ -13,10 +13,27 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                list: '=found'
-            }
+                items: '<found'
+            },
+            controller: FoundItemsDirectiveController,
+            controllerAs: 'list',
+            bindToController: true
         };
         return ddo;
+    }
+
+    function FoundItemsDirectiveController() {
+        var listOfItems = this;
+
+        listOfItems.nothingFound = function() {                
+            console.log("directive controller method called");
+            console.log(listOfItems);
+
+            if (listOfItems.items === undefined)
+                return true;
+
+            return (listOfItems.items.length == 0);
+        }
     }
 
     NarrowItDownController.$inject = ['MenuSearchService'];
