@@ -10,19 +10,29 @@
 
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
+        var ctrl = this;
         console.log("start UI controller");
 
-        this.narrowDown = function() {
-            console.log("clicked on Narrow Down button, with search term: ", this.searchTerm);
-            var foo = MenuSearchService.getMatchedMenuItems(this.searchTerm);
+        ctrl.narrowDown = function() {
+            console.log("clicked on Narrow Down button, with search term: ", ctrl.searchTerm);
+            var menuItemsPromise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+            menuItemsPromise.then(function (responseArray) {
+                console.log("copying response from service into UI controller");
+                ctrl.menuItems = responseArray;
+                //console.log(responseArray);
+            })
+            .catch(function (error) {
+                console.log("*** error processing menu items by controller");
+            })
         }
     }
 
     MenuSearchService.$inject = ['$http', 'ApiURLofRestaurant'];
     function MenuSearchService($http, ApiURLofRestaurant) {
+        var service = this;
         console.log("start menu search service");
-    
-        this.getMatchedMenuItems = function(searchTerm) {
+
+        service.getMatchedMenuItems = function(searchTerm) {
             console.log("requesting menu from restaurant website");
             var httpRequestPromise = $http(
                 {
@@ -31,9 +41,9 @@
                 }
             );
 
-            var x = httpRequestPromise.then(function(httpResult) {
+            var listOfItemsPromise = httpRequestPromise.then(function(httpResult) {
                 var menuObj = httpResult.data;
-                console.log("Menu is : ", menuObj);
+                //console.log("Menu is : ", menuObj);
 
                 var menuItems = [];
                 for(var category in menuObj)
@@ -43,6 +53,11 @@
                     //console.log("total number of menu items is now ", menuItems.length);
                 }
                 console.log("total number of menu items is ", menuItems.length);
+
+                if (searchTerm === undefined || searchTerm.length === 0) {
+                    console.log("search term undefined or empty, returning full list");
+                    return menuItems;
+                }
 
                 var lowercaseSearchTerm = searchTerm.toLowerCase();
                 console.log("searching for <", lowercaseSearchTerm, ">");
@@ -54,8 +69,10 @@
                 }
                 );
                 console.log("total number of menu items containing the search term is ", filteredList.length);
+                return filteredList;
             });
-            return x;
+
+            return listOfItemsPromise;
         }
     }
 
