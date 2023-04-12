@@ -23,16 +23,21 @@
     }
 
     function FoundItemsDirectiveController() {
-        var listOfItems = this;
+        var dirCtrl = this;
 
-        listOfItems.nothingFound = function() {                
+        dirCtrl.nothingFound = function() {                
             console.log("directive controller method called");
-            console.log(listOfItems);
+            //console.log(dirCtrl);
 
-            if (listOfItems.items === undefined)
+            if (dirCtrl.items === undefined)
                 return true;
 
-            return (listOfItems.items.length == 0);
+            return (dirCtrl.items.length == 0);
+        }
+
+        dirCtrl.removeItem = function(index) {
+            console.log("user requests to remove item ", index);
+            var dumpIt = dirCtrl.items.splice(index, 1);
         }
     }
 
