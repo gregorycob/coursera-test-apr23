@@ -18,12 +18,9 @@
     <div ng-click="nidCtrl.narrowDown()" class="form-group narrow-button">
       <button class="btn btn-primary">Narrow It Down For Me!</button>
     </div>
-    <div>
-      <ul>
-        <li ng-repeat="item in nidCtrl.menuItems">{{item.name}}</li>
-      </ul>  
-    </div>
-    <found-items found-items="...." on-remove="...."></found-items>
+    <br/>
+    <br/>
+    <found-items found="nidCtrl.menuItems"></found-items>
   </div>
 
 </body>
