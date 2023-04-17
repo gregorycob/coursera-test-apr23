@@ -42,6 +42,11 @@
 
         ctrl.narrowDown = function() {
             console.log("clicked on Narrow Down button, with search term: ", ctrl.searchTerm);
+
+            var dummy = MenuSearchService.getAllCategories();
+            var dummy2 = MenuSearchService.getItemsForCategory("DK");
+            var dummy3 = MenuSearchService.getItemsForCategory("V");
+
             var menuItemsPromise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
             menuItemsPromise.then(function (responseArray) {
                 console.log("copying response from service into UI controller");
