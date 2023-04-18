@@ -51,7 +51,9 @@
                 console.log("items: ", httpResult);
 
                 return httpResult.data;
-            })            
+            })
+            
+            return listOfCategoriesPromise;
         }
 
         service.getMatchedMenuItems = function(searchTerm) {

@@ -4,14 +4,22 @@
     angular.module('data')
     .controller('CategoryContentController', CategoryContentController);
     
-    CategoryContentController.$inject = ['$stateParams'];
-    function CategoryContentController($stateParams) {
+    CategoryContentController.$inject = ['$stateParams', 'MenuDataService'];
+    function CategoryContentController($stateParams, MenuDataService) {
         console.log("start Category Content Controller with category shortname parameter: ", $stateParams.categoryShortName);
-    //   var itemDetail = this;
-    //   var item = items[$stateParams.itemId];
-    //   itemDetail.name = item.name;
-    //   itemDetail.quantity = item.quantity;
-    //   itemDetail.description = item.description;
+        
+        var $ctrl = this;
+
+        var menuItemsPromise = MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+
+        menuItemsPromise.then(function (responseArray) {
+            console.log("copying response from service into category content controller: ", responseArray);
+            $ctrl.items = responseArray.menu_items;
+            console.log("ctrl.items = ", $ctrl.items);
+        })
+        .catch(function (error) {
+            console.log("*** error retrieving data for categories controller");
+        })    
     }
     
     })();
