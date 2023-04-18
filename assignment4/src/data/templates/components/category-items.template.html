@@ -1,0 +1,6 @@
+<ul>
+    <li ng-repeat="item in $ctrl.items">
+      {{item.name}} ({{item.short_name}})
+      <div ng-if="item.description"><small><i>{{item.description}}</i></small></div>
+    </li>
+</ul>

@@ -20,13 +20,13 @@
       // Home page
       .state('home', {
         url: '/',
-        templateUrl: 'src/data/templates/home.template.html'
+        templateUrl: 'src/data/templates/views/home.template.html'
       })
     
       // List of Categories page
-      .state('listOfCategories', {
-        url: '/list-of-categories',
-        templateUrl: 'src/data/templates/main-listofcategories.template.html',
+      .state('categories', {
+        url: '/categories',
+        templateUrl: 'src/data/templates/views/main-listofcategories.template.html',
         controller: 'MainListOfCategoriesController as mainList',
         resolve: {
           items: ['MenuDataService', function (MenuDataService) {
@@ -35,9 +35,9 @@
         }
       })
     
-      .state('listOfCategories.category', {
-        url: '/category/{categoryShortName}',
-        templateUrl: 'src/data/templates/category-listing.template.html',
+      .state('categories.category', {
+        url: '/category/{categoryShortName}/items',
+        templateUrl: 'src/data/templates/views/category-listing.template.html',
         controller: "CategoryContentController as catListing"
       });
     
