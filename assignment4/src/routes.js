@@ -35,11 +35,11 @@
         }
       })
     
-    //   .state('mainList.itemDetail', {
-    //     url: '/item-detail/{itemId}',
-    //     templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-    //     controller: "ItemDetailController as itemDetail"
-    //   });
+      .state('listOfCategories.category', {
+        url: '/category/{categoryShortName}',
+        templateUrl: 'src/data/templates/category-listing.template.html',
+        controller: "CategoryContentController as catListing"
+      });
     
     }
     
