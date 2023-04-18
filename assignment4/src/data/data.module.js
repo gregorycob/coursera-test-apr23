@@ -2,8 +2,8 @@
     'use strict';
     
     console.log("code for data module");
-    
-    angular.module('data', []);
+
+    angular.module('data', ['ui.router']);
     
     angular.module('data')
     .config(function () {

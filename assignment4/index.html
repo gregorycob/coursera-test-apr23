@@ -1,46 +1,31 @@
 <!doctype html>
-<html lang="en" ng-app="NarrowItDownApp">
+<html lang="en" ng-app="data">
   <head>
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Libraries -->
     <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-ui-router.min.js"></script>
     
     <!-- Modules -->
     <script src="src/data/data.module.js"></script>
 
+    <!-- Routes -->
+    <script src="src/routes.js"></script>
+    
     <!-- 'data' module artifacts -->
     <script src="src/data/menudata.service.js"></script>
-    <script src="src/data/categories.controller.js"></script>
     <script src="src/data/categories.component.js"></script>
-
-    <!-- to remove sooner or later-->
-    <script src="src/app.js"></script>
+    <script src="src/data/main-listofcategories.controler.js"></script>
 
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
   </head>
 <body>
-   <div class="container" ng-controller="NarrowItDownController as nidCtrl">
     <h1>Welcome to the Restaurant (Assignment 4)</h1>
 
-    <div ng-controller="CategoriesController as ctrl">
-      <categories items="ctrl.items"></categories>
-    </div>
-
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
-
-    <div class="form-group">
-      <input ng-model="nidCtrl.searchTerm" type="text" placeholder="search term" class="form-control">
-    </div>
-    <div ng-click="nidCtrl.narrowDown()" class="form-group narrow-button">
-      <button class="btn btn-primary">Narrow It Down For Me!</button>
-    </div>
-    <br/>
-    <br/>
-    <found-items found="nidCtrl.menuItems" on-remove="nidCtrl.removeItem(index)"></found-items>
-  </div>
+    <ui-view></ui-view>
 
 </body>
 </html>
