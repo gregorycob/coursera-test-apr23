@@ -35,19 +35,19 @@
         }
     }
 
-    NarrowItDownController.$inject = ['MenuSearchService'];
-    function NarrowItDownController(MenuSearchService) {
+    NarrowItDownController.$inject = ['MenuDataService'];
+    function NarrowItDownController(MenuDataService) {
         var ctrl = this;
         console.log("start UI controller");
 
         ctrl.narrowDown = function() {
             console.log("clicked on Narrow Down button, with search term: ", ctrl.searchTerm);
 
-            var dummy = MenuSearchService.getAllCategories();
-            var dummy2 = MenuSearchService.getItemsForCategory("DK");
-            var dummy3 = MenuSearchService.getItemsForCategory("V");
+            var dummy = MenuDataService.getAllCategories();
+            var dummy2 = MenuDataService.getItemsForCategory("DK");
+            var dummy3 = MenuDataService.getItemsForCategory("V");
 
-            var menuItemsPromise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
+            var menuItemsPromise = MenuDataService.getMatchedMenuItems(ctrl.searchTerm);
             menuItemsPromise.then(function (responseArray) {
                 console.log("copying response from service into UI controller");
                 ctrl.menuItems = responseArray;

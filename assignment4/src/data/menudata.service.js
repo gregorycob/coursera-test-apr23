@@ -4,14 +4,14 @@
     console.log("code for menudata service");
 
     angular.module('data')
-    .service('MenuSearchService', MenuSearchService)
+    .service('MenuDataService', MenuDataService)
     .constant('ApiURLofAllCategories', "https://coursera-jhu-default-rtdb.firebaseio.com/categories.json")
     .constant('ApiURLofRestaurant', "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json")
     .constant('ApiBaseURLforCategoryItems', "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/")
    
 
-    MenuSearchService.$inject = ['$http', 'ApiURLofRestaurant', 'ApiURLofAllCategories', 'ApiBaseURLforCategoryItems'];
-    function MenuSearchService($http, ApiURLofRestaurant, ApiURLofAllCategories, ApiBaseURLforCategoryItems) {
+    MenuDataService.$inject = ['$http', 'ApiURLofRestaurant', 'ApiURLofAllCategories', 'ApiBaseURLforCategoryItems'];
+    function MenuDataService($http, ApiURLofRestaurant, ApiURLofAllCategories, ApiBaseURLforCategoryItems) {
         var service = this;
         console.log("start menu search service");
 
@@ -30,6 +30,8 @@
 
                 return httpResult.data;
             })
+
+            return listOfCategoriesPromise;
         }
 
         service.getItemsForCategory = function(categoryShortname) {

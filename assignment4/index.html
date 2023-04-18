@@ -12,6 +12,8 @@
 
     <!-- 'data' module artifacts -->
     <script src="src/data/menudata.service.js"></script>
+    <script src="src/data/categories.controller.js"></script>
+    <script src="src/data/categories.component.js"></script>
 
     <!-- to remove sooner or later-->
     <script src="src/app.js"></script>
@@ -21,6 +23,12 @@
   </head>
 <body>
    <div class="container" ng-controller="NarrowItDownController as nidCtrl">
+    <h1>Welcome to the Restaurant (Assignment 4)</h1>
+
+    <div ng-controller="CategoriesController as ctrl">
+      <categories items="ctrl.items"></categories>
+    </div>
+
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
     <div class="form-group">
