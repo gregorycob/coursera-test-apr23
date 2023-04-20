@@ -24,8 +24,8 @@
         formCtrl.user.menunumber = MenuService.getMenuNumberFromReference(itemRef);
         console.log("category: ", itemRef.category);
         
-        var menuCategoryPromise = MenuService.getMenuItems(itemRef.category);
-        menuCategoryPromise.then(function(response) {
+        var menuItemPromise = MenuService.getMenuItem(itemRef.category, itemRef.index);
+        menuItemPromise.then(function(response) {
             console.log("response : ", response);
             if (response === undefined || response === null) {
                 console.log("error : undefined or null response");
@@ -33,12 +33,6 @@
                 return;
             }
 
-            if (response.menu_items.length <= itemRef.index) {
-                console.log("in category ", itemRef.category, " there is no item ", itemRef.index);
-                formCtrl.invalidmenu = true;
-                return;
-            }
-            
             CustomersService.saveCustomerInformation(formCtrl.user);
             formCtrl.completed = true;
 

@@ -11,7 +11,6 @@
         required
         minlength="2"
         ng-maxlength="20"
-        ng-init="formCtrl.user.firstname='Greg'"
         class="form-control">
         <span
           ng-if="(signupForm.firstname.$error.minlength || signupForm.firstname.$error.required) && signupForm.firstname.$touched">
@@ -30,7 +29,6 @@
         required
         minlength="2"
         ng-maxlength="20"
-        ng-init="formCtrl.user.lastname='Cob'"
         class="form-control">
         {{ reg.user.lastname }}
         <span
@@ -50,7 +48,6 @@
         <input type="email" name="email" placeholder="Enter your email"
         ng-model="formCtrl.user.email"
         required
-        ng-init="formCtrl.user.email='greg@cob.com'"
         class="form-control">
         <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
             Must be a valid email address: user@domain.com format
@@ -64,7 +61,6 @@
         ng-model="formCtrl.user.phone"
         pattern="(\d{3})-(\d{3})-(\d{4})"
         required
-        ng-init="formCtrl.user.phone='111-222-3333'"
         class="form-control">
         <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
         Phone must be in the US format ###-###-####.
@@ -79,7 +75,6 @@
         required
         minlength="2"
         ng-maxlength="4"
-        ng-init="formCtrl.user.menunumber='DK3'"
         class="form-control">
         <span
         ng-if="(signupForm.menunumber.$error.minlength || signupForm.menunumber.$error.required || signupForm.menunumber.$error.maxlength) && signupForm.menunumber.$touched">
