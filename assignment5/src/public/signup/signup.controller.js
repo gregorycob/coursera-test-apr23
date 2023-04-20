@@ -3,8 +3,8 @@
     angular.module('public')
     .controller('SignupController', SignupController);
 
-    SignupController.$inject = ['CustomersService']
-    function SignupController(CustomersService) {
+    SignupController.$inject = ['CustomersService', 'MenuService']
+    function SignupController(CustomersService, MenuService) {
       var formCtrl = this;
 
       formCtrl.submit = function () {
@@ -13,7 +13,7 @@
         formCtrl.invalidmenu = false;
         formCtrl.completed = false;
 
-        var itemRef = CustomersService.getItemReferenceFromMenuNumber(formCtrl.user.menunumber);
+        var itemRef = MenuService.getItemReferenceFromMenuNumber(formCtrl.user.menunumber);
         if (itemRef === null)
         {
             formCtrl.invalidmenu = true;
@@ -21,10 +21,10 @@
         }
 
         console.log("category: ", itemRef.category);
-        formCtrl.user.menunumber = CustomersService.getMenuNumberFromReference(itemRef);
+        formCtrl.user.menunumber = MenuService.getMenuNumberFromReference(itemRef);
         console.log("category: ", itemRef.category);
         
-        var menuCategoryPromise = CustomersService.getItemsForCategory(itemRef.category);
+        var menuCategoryPromise = MenuService.getMenuItems(itemRef.category);
         menuCategoryPromise.then(function(response) {
             console.log("response : ", response);
             if (response === undefined || response === null) {

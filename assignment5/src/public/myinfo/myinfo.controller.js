@@ -12,7 +12,7 @@
         return;
       }
 
-      var itemRef = CustomersService.getItemReferenceFromMenuNumber(infoCtrl.user.menunumber);
+      var itemRef = MenuService.getItemReferenceFromMenuNumber(infoCtrl.user.menunumber);
       if (itemRef === null)
       {
           formCtrl.invalidmenu = true;
