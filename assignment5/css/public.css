@@ -1,3 +1,13 @@
+
+/* For the sign-up form */
+.ng-touched.ng-valid {
+  border: 4px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 4px red solid;
+}
+
 /* HOME PAGE */
 .container .jumbotron {
   box-shadow: 0 0 50px #3F0C1F;
