@@ -77,13 +77,13 @@
         <input type="text" name="menunumber" placeholder="Enter your favorite menu number (short name)"
         ng-model="formCtrl.user.menunumber"
         required
-        minlength="1"
-        ng-maxlength="2"
-        ng-init="formCtrl.user.menunumber='V'"
+        minlength="2"
+        ng-maxlength="4"
+        ng-init="formCtrl.user.menunumber='DK3'"
         class="form-control">
         <span
         ng-if="(signupForm.menunumber.$error.minlength || signupForm.menunumber.$error.required || signupForm.menunumber.$error.maxlength) && signupForm.menunumber.$touched">
-        must be 1 or 2 characters long
+        must be 2 to 4 characters long, such as "A1" or "DK3"
         </span>
         <br>
     </div>

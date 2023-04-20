@@ -1,0 +1,24 @@
+<div class="container" ng-controller="MyInfoController as infoCtrl">
+
+    <div ng-if="infoCtrl.user === undefined || infoCtrl.user === null">
+        <span class="alert alert-warning">
+            Not signed up yet.
+            <a ui-sref="public.signup">
+                Sign-up now !
+            </a>
+        </span>    
+    </div>
+
+    <div ng-if="infoCtrl.user !== null">
+        Welcome {{infoCtrl.user.firstname}} {{infoCtrl.user.lastname}} !
+
+        Your contact information is:
+        <ul>
+            <li>E-mail: {{infoCtrl.user.email}}</li>
+            <li>Phone: {{infoCtrl.user.phone}}</li>
+        </ul>
+
+        We offer a 5% discount on your favorite dish : {{infoCtrl.user.menunumber}} !
+    </div>
+ 
+</div>
