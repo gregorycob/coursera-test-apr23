@@ -71,9 +71,8 @@
         minlength="1"
         ng-maxlength="2"
         class="form-control">
-        {{ reg.user.menunumber }}
         <span
-        ng-if="(signupForm.menunumber.$error.minlength || signupForm.menunumber.$error.required || signupForm.menunumber.$error.maxlength) && regForm.menunumber.$touched">
+        ng-if="(signupForm.menunumber.$error.minlength || signupForm.menunumber.$error.required || signupForm.menunumber.$error.maxlength) && signupForm.menunumber.$touched">
         must be 1 or 2 characters long
         </span>
         <br>
