@@ -11,14 +11,22 @@
 
     <div ng-if="infoCtrl.user !== null">
         Welcome {{infoCtrl.user.firstname}} {{infoCtrl.user.lastname}} !
-
+        <br/>
         Your contact information is:
         <ul>
             <li>E-mail: {{infoCtrl.user.email}}</li>
             <li>Phone: {{infoCtrl.user.phone}}</li>
         </ul>
+        
+        <div class="text-center">
+            We offer a 5% discount on your favorite dish : {{infoCtrl.user.menunumber}} !
+            <br/>
+            <br/>
+        </div>
 
-        We offer a 5% discount on your favorite dish : {{infoCtrl.user.menunumber}} !
+        <menu-item menu-item="infoCtrl.menuItem" category-short-name="infoCtrl.category">
+        </menu-item>
+
     </div>
  
 </div>

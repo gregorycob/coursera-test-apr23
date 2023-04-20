@@ -22,6 +22,14 @@ function MenuService($http, ApiPath) {
     });
   };
 
+  service.getMenuItem = function(category, index) {
+    var urltarget = ApiPath + '/menu_items/' + category + '/menu_items/' + index + '.json';
+    console.log("url target: ", urltarget);
+    return $http.get(urltarget).then(function (response) {
+      return response.data;
+    });
+  }
+
 }
 
 
