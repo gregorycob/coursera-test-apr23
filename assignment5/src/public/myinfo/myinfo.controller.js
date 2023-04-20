@@ -15,7 +15,7 @@
       var itemRef = MenuService.getItemReferenceFromMenuNumber(infoCtrl.user.menunumber);
       if (itemRef === null)
       {
-          formCtrl.invalidmenu = true;
+          infoCtrl.invalidmenu = true;
           return;
       }
 
